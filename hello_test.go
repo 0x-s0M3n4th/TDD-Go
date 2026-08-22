@@ -3,10 +3,22 @@ package main
 import "testing"
 
 func TestHello(t *testing.T) {
-	got := Hello("Somenath") // variables
-	want := "Hello, Somenath!"
+	// Case when argument is provided into the Hello() func
+	t.Run("Saying hello to people", func(t *testing.T) {
+		got := Hello("Somenath")
+		want := "Hello, Somenath!"
+		if got != want {
+			t.Errorf("got %q want %q", got, want)
+		}
+	})
 
-	if got != want {
-		t.Errorf("got %q want %q", got, want)
-	}
+	// Case when an empty string  is provided as argument
+	t.Run("say 'Hello, World' when an empty string is supplied", func(t *testing.T) {
+		got := Hello("")
+		want := "Hello, World!"
+
+		if got != want {
+			t.Errorf("got %q want %q", got, want)
+		}
+	})
 }
