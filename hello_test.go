@@ -3,9 +3,8 @@ package main
 import "testing"
 
 func TestHello(t *testing.T) {
-	// Case when argument is provided into the Hello() func
+	// Case of passing 2 args -> Hello()
 	// Spanish
-
 	t.Run("in Spanish", func(t *testing.T) {
 		got := Hello("Somenath", "Spanish")
 		want := "Hola, Somenath:)"
@@ -13,14 +12,20 @@ func TestHello(t *testing.T) {
 	})
 
 	// French
-
 	t.Run("in french", func(t *testing.T) {
 		got := Hello("Levi", "French")
 		want := "Bonjour, Levi^-^"
 		assertCorrectMessage(t, got, want)
 	})
 
-	// Case when an empty string  is provided as argument
+	// Bengali
+	t.Run("in Bengali", func(t *testing.T) {
+		got := Hello("Ravi", "Bengali")
+		want := "Nomoskar, Ravi^<>^"
+		assertCorrectMessage(t, got, want)
+	})
+
+	// Case of passing no args -> Hello()
 	t.Run("say 'Hello, World' when an empty string is supplied", func(t *testing.T) {
 		got := Hello("", "")
 		want := "Hello, World!"

@@ -1,39 +1,49 @@
 package main
 
-import "fmt" // Importing a package that contains the Println funtion
+// import "fmt" // Importing a package that contains the Println funtion
 
-// Spanish
-const spanish = "Spanish"
-const spanishHelloPrefix = "Hola, " // spanish const variable
-const spanishEndingSign = ":)"
+const (
+	spanish = "Spanish"
+	french  = "French"
+	bengali = "Bengali"
 
-// English/Empty string
-const englishHelloPrefix = "Hello, " // Declaring a constant value -> english
-const englishEndingSign = "!"
+	englishHelloPrefix = "Hello, "
+	spanishHelloPrefix = "Hola, "
+	frenchHelloPrefix  = "Bonjour, "
+	bengaliHelloprefix = "Nomoskar, "
 
-// French
-const french = "French"
-const frenchHelloPrefix = "Bonjour, "
-const frenchEndingSign = "^-^"
+	spanishEndingSign = ":)"
+	englishEndingSign = "!"
+	frenchEndingSign  = "^-^"
+	bengaliEndingSign = "^<>^"
+)
 
-func Hello(name string, language string) string { // string -> means the func returns string value
+// Base function
+func Hello(name string, language string) string {
 	if name == "" {
 		name = "World"
 	}
 
-	// Spanish
-	if language == spanish {
-		return spanishHelloPrefix + name + spanishEndingSign
-	}
-
-	//French
-	if language == french {
-		return frenchHelloPrefix + name + frenchEndingSign
-	}
-
-	return englishHelloPrefix + name + englishEndingSign
+	return greetingPrefix(name, language)
 }
 
-func main() {
-	fmt.Println(Hello("Chris", ""))
+// Helper function
+func greetingPrefix(name string, language string) string {
+
+	prefix := englishHelloPrefix
+	endingSign := englishEndingSign
+
+	switch language {
+	case spanish:
+		prefix = spanishHelloPrefix
+		endingSign = spanishEndingSign
+	case french:
+		prefix = frenchHelloPrefix
+		endingSign = frenchEndingSign
+	case bengali:
+		prefix = bengaliHelloprefix
+		endingSign = bengaliEndingSign
+	}
+
+	return prefix + name + endingSign
 }
