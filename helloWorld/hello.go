@@ -18,7 +18,7 @@ const (
 	bengaliEndingSign = "^<>^"
 )
 
-// Base function
+// Base function -> Public function
 func Hello(name string, language string) string {
 	if name == "" {
 		name = "World"
@@ -27,7 +27,7 @@ func Hello(name string, language string) string {
 	return greetingPrefix(name, language)
 }
 
-// Helper function
+// Helper function -> Private
 func greetingPrefix(name string, language string) string {
 
 	prefix := englishHelloPrefix
